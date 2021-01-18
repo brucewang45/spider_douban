@@ -6,7 +6,7 @@ class MYSQL():
     connect=None
 
     def _Connect(self,):
-        self.connect = pymysql.connect(host="localhost", user="root", password="123456", database="spider")
+        self.connect = pymysql.connect(host="172.17.0.2", user="root", password="123456", database="spider")
 
     # def __init__(self, host=None, user=None, password="",
     #              database=None, port=0, unix_socket=None,
