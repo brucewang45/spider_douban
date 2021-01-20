@@ -24,6 +24,8 @@ def StringDetail(astr):
     return STR.OutPut()
 
 def StoryData(content):
+#提供字典方式读取数据，字段失败时要给出正确的字段名
+
     MY=MYSQL()
     MY.Insert(content)
 
@@ -37,13 +39,16 @@ for node in nodeTree:
         TopicHerf=contentNode[0].attrib['href']
         AuthorName=contentNode[1].text
         AuthorHerf=contentNode[1].attrib['href']
+        ReplyTime=node.xpath(".//td[@class='time']")[0].text
+        ReplyCount=node.xpath(".//td[@class='r-count ']")[0].text
+
     else:
         continue
 
     TopicTitle=StringDetail(TopicTitle)
     AuthorName=StringDetail(AuthorName)
 
-    StoryData("'{}','{}','{}','{}'".format(TopicTitle,TopicHerf,AuthorName,AuthorHerf))
+    StoryData("'{}','{}','{}','{}','{}','{}'".format(TopicTitle,TopicHerf,AuthorName,AuthorHerf,ReplyTime,ReplyCount))
 
 
     # b=AuthorHerf['href']
